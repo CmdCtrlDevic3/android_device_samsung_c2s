@@ -268,7 +268,7 @@
 	<ctl name="Left DSP1 Preload Switch" value="1" />
 	<ctl name="Left PCM Source" value="DSP" />
 	<ctl name="Left DSP RX2 Source" value="ASPRX1" />
-	<ctl name="Left Boost Enable" value="Disabled" />
+	<ctl name="Left Boost Enable" value="Enabled" />
 	<ctl name="Left AMP Enable Switch" value="0" />
 	<ctl name="Left AMP Mute" value="Unmuted" />
 	<ctl name="Left PCM Soft Ramp" value=".5ms" />
@@ -1184,7 +1184,7 @@
 	</path>
 
 	<!-- seriallif 16bit with 20ms wdma2 periodsize -->
-	<path name="set-seriallif-wdma2-16bit-pdsz20-config">
+	<path name="set-seriallif-wdma2-16bit-pdsz5-config">
     		<!-- wdma2 channels are set 8ch for serial LIF -->
 		<ctl name="ABOX WDMA2 Width" value="16" />
 		<ctl name="ABOX WDMA2 Channel" value="8" />
@@ -2066,9 +2066,11 @@
 	<!-- Remote MIC playback paths -->
 	<path name="route-remote_mic-comp-pipeline">
 		<path name="dev-dual-invert-mic" />
-		<path name="set-seriallif-wdma2-16bit-pdsz20-config" />
+		<path name="set-seriallif-wdma2-16bit-pdsz5-config" />
 		<path name="route-uaif6-to-nsrc2" />
 		<path name="route-nsrc2-to-wdma2" />
+		<ctl name="ABOX WDMA2 Auto Fade In" value="1" />
+        <ctl name="ABOX WDMA2 Vol Change" value="256" />
     		<!-- Mic dummy tirgger path -->
 		<path name="route-wdma2-to-vpcmindai7" />
 		<path name="route-wdma2-to-tdmdemux4" />
@@ -2087,19 +2089,19 @@
 	</path>
 
 	<path name="remote_mic-bt-sco-headset">
-		<path name="route-tdmdemux4-txse2-rxse-srccom6_a" />
+		<path name="route-tdmdemux4-txse1-srccom6_a" />
 		<path name="route-vpcmoutdai6-to-srccom6_b" />
 		<path name="media-bt-sco-headset" />
 	</path>
 
 	<path name="remote_mic-usb-headset">
-		<path name="route-tdmdemux4-txse2-rxse-srccom6_a" />
+		<path name="route-tdmdemux4-txse1-srccom6_a" />
 		<path name="route-vpcmoutdai6-to-srccom6_b" />
 		<path name="media-usb-headset" />
 	</path>
 
 	<path name="remote_mic-direct-usb-headset">
-		<path name="route-tdmdemux4-txse2-rxse-srccom6_a" />
+		<path name="route-tdmdemux4-txse1-srccom6_a" />
 		<path name="route-vpcmoutdai6-to-srccom6_b" />
 		<path name="media-direct-usb-headset" />
 	</path>

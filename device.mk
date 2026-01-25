@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     libbt-vendor:64
 
 # Boot Animation
-TARGET_SCREEN_HEIGHT := 3200
+TARGET_SCREEN_HEIGHT := 3088
 TARGET_SCREEN_WIDTH := 1440
 
 # Camera
@@ -47,10 +47,6 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlayDevice \
     SystemUIOverlayDevice \
     WiFiOverlayDevice
-
-# Sensors
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -72,8 +68,8 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set_bool,wpa_supplicant_8,board_wlan_bcmdhd_sae,true)
 
-# Inherit from Hubble
-$(call inherit-product, device/samsung/universal9830-common/device-hubble.mk)
+# Inherit from Canvas
+$(call inherit-product, device/samsung/universal9830-common/device-canvas.mk)
 
 # Inherit from the proprietary version
-$(call inherit-product-if-exists, vendor/samsung/x1s/x1s-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/c2s/c2s-vendor.mk)
